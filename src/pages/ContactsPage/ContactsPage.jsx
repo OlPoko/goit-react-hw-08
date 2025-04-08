@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "../../components/ContactList/ContactList";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import ContactForm from "../../components/ContactForm/ContactForm";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks } from "./redux/contacts/contactsOps";
-import { addContact } from "./redux/contacts/contactsOps";
+import { fetchTasks } from "../../redux/contacts/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOps";
 import {
   selectContacts,
   selectIsLoading,
   selectIsError,
-} from "./redux/contacts/selectors";
-import Loader from "./components/Loader/Loader";
+} from "../../redux/contacts/selectors";
+import Loader from "../../components/Loader/Loader";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <PageTitle>Your Phonebook</PageTitle>
       <ContactForm onAdd={handleAddContact} />
       {isLoading && <Loader />}
       {isError && <Error />}
