@@ -1,9 +1,14 @@
 import { Formik, Form, Field } from "formik";
 
 import css from "./LoginForm.module.css";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
+    console.log("📨 Login form values:", values);
+    dispatch(logIn(values));
     actions.resetForm();
   };
 
