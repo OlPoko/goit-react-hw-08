@@ -1,7 +1,7 @@
 .Loading {
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 0 auto;
+  height: 100vh;
+  margin: 0;
 }

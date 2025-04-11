@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
-import styles from "./ContactList.module.css";
 import { selectFilteredContacts } from "../../redux/contacts/contactsSlice";
+import styles from "./ContactList.module.css";
 
 const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -9,7 +9,9 @@ const ContactList = () => {
   return (
     <ul className={styles.contactList}>
       {contacts.map(({ id, name, number }) => (
-        <Contact key={id} id={id} name={name} number={number} />
+        <li key={id} className={styles.contactItem}>
+          <Contact id={id} name={name} number={number} />{" "}
+        </li>
       ))}
     </ul>
   );

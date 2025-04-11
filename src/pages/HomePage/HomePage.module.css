@@ -1,0 +1,36 @@
+.container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.description {
+  font-size: 18px;
+  color: #555;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.emoji {
+  margin-left: 8px;
+}
+
+.icon {
+  margin-top: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

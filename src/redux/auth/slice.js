@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logIn, register, logOut } from "./operations";
+import { logIn, register, logOut, refreshUser } from "./operations";
+import { IoIosRefresh } from "react-icons/io";
 
 const authSlice = createSlice({
   name: "auth",
@@ -12,6 +13,7 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isLoading: false,
     error: null,
+    isRefreshing: false,
   },
   extraReducers: (builder) =>
     builder
@@ -30,11 +32,8 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload || action.error.message;
         console.log("❌ Registration error:", state.error);
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-        state.isLoading = false;
       })
+
       .addCase(logIn.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -55,6 +54,17 @@ const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
+      })
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isRefreshing = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
       }),
 });
 
