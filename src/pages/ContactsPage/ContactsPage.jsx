@@ -4,8 +4,8 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks } from "../../redux/contacts/contactsOps";
-import { addContact } from "../../redux/contacts/contactsOps";
+import { fetchTasks } from "../../redux/contacts/operations";
+import { addContact } from "../../redux/contacts/operations";
 import {
   selectContacts,
   selectIsLoading,
